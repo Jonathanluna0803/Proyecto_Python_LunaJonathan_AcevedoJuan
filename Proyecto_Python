@@ -636,9 +636,31 @@ while (booleanito == True):
                         print(f"   Prueba inicial teórica: {camper['NotaPruebaTeorica']}")
                         print(f"   Prueba inicial práctica: {camper['NotaPruebaPractica']}")
                         print(f"   Promedio general: {camper['NotaPromedioGeneral']}")
+                        print(f"   Quizzes: {camper['NotaQuizzes']}")
                     elif (opcionCamper == 4):
-                        print(f"RUTA ASIGNADA: {camper['Grupo'] if camper['Grupo'] else 'No asignado aún'}")
-                        print(f"TRAINER ASIGNADO: {camper['Grupo'] if camper['Grupo'] else 'No asignado aún'}")
+                        print(f"RUTA ASIGNADA: {camper['Grupo']}")
+                        if camper["Grupo"] == "P1":
+                            print("TRAINER ASIGNADO: Pedro")
+                        elif camper["Grupo"] == "P2":
+                            print("TRAINER ASIGNADO: Pedro")
+                        elif camper["Grupo"] == "P3":
+                            print("TRAINER ASIGNADO: Pedro")
+                        elif camper["Grupo"] == "J1":
+                            print("TRAINER ASIGNADO: Jolver")
+                        elif camper["Grupo"] == "P2":
+                            print("TRAINER ASIGNADO: Pedro")
+                        elif camper["Grupo"] == "Cr1":
+                            print("TRAINER ASIGNADO: Cristian")
+                        elif camper["Grupo"] == "Cr2":
+                            print("TRAINER ASIGNADO: Cristian")
+                        elif camper["Grupo"] == "E1":
+                            print("TRAINER ASIGNADO: Edwin")
+                        elif camper["Grupo"] == "K1":
+                            print("TRAINER ASIGNADO: Kevin")
+                        elif camper["Grupo"] == "Ca1":
+                            print("TRAINER ASIGNADO: Carlos")
+                        elif camper["Grupo"] == "Ca2":
+                            print("TRAINER ASIGNADO: Carlos")
                     elif (opcionCamper == 5):
                         print("\n Sesión cerrada. ¡Hasta pronto!")
                         booleanito2 = False
@@ -659,11 +681,38 @@ while (booleanito == True):
                     if (opcionTrainer == 1):
                         print("REGISTRO DE NOTAS POR MÓDULO")
                         idCamper = input("ID del camper: ")                    
-                        # Aquí iría la lógica para buscar al camper y registrar notas
-                        print("Funcionalidad en desarrollo...")
+                        
+                        for camper in Campers:
+                            if camper["#Identificacion"] == idCamper:
+                                print(f"Camper {camper['Nombre']}")
+                                print(f"Trainer {trainer['Nombre']} que nota desea registrar")
+                                print("1. Nota quizzes")
+                                print("2. Nota prueba practica")
+                                registroNotas = int(input(": "))
+                                if (registroNotas == 1):
+                                    notaQuizz = float(input("Que nota desea ingresar: "))
+                                    camper["NotaQuizzes"] = notaQuizz
+                                    print("!Nota Registrada¡")
+                                elif (registroNotas == 2):
+                                    notaPractica = float(input("Que nota desea ingresar:"))
+                                    camper["NotaPruebaPractica"] = notaPractica
+                                    print("!Nota Registrada¡")
                     elif (opcionTrainer == 2):
-                        print("CAMPERS ASIGNADOS:")
-                        print("Funcionalidad en desarrollo...")         
+                        print("Campers asignados:")
+                        print(f"{trainer['Grupos']}")
+                        grupoTrainer = input("Cual de sus grupos desea ver?: ")
+                        if grupoTrainer == trainer["Grupos"]:
+                            print(grupoTrainer)
+                            grupoNombre = input("Cual de sus grupos desea ver?: ")
+                            for grupoNombre in Grupos:
+                                if grupoTrainer == grupoNombre["Nombre"]:
+                                    print(f"{grupoNombre['Integrantes']}")
+                    elif (opcionTrainer == 3):
+                       print("HORARIO Y MI SALÓN")                                  
+
+
+                    elif (opcionTrainer == 4):
+                        print("Generar reporte y bajo rendimiento")        
                     elif (opcionTrainer == 5):
                         print("Sesión cerrada. ¡Hasta pronto!")
                         booleanito3 = False
