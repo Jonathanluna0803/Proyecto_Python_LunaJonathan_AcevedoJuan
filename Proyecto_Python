@@ -786,6 +786,13 @@ while (booleanito == True):
                        print(f"{trainer['Nombre']} Horario: {trainer['Jornada']}")
                     elif (opcionTrainer == 4):
                         print("Generar reporte y bajo rendimiento")
+                            for camper in Campers:
+                                if camper["Riesgo"] == "Alto":
+                                    print(f"   - {camper['Nombre']} {camper['Apellido']} (ID: {camper['#Identificacion']})")
+                            print("\n CAMPERS CON RENDIMIENTO BAJO (<60):")
+                            for camper in Campers:
+                                if camper["NotaPromedioGeneral"] < 60 and camper["NotaPromedioGeneral"] > 0:
+                                    print(f"   - {camper['Nombre']} {camper['Apellido']} (ID: {camper['#Identificacion']}) - Promedio: {camper['NotaPromedioGeneral']}")
                     elif (opcionTrainer == 5):
                         print("Sesión cerrada. ¡Hasta pronto!")
                         booleanito3 = False
